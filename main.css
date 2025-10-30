@@ -1,0 +1,148 @@
+:root { --nav-h: 100px; }
+
+        /* ===== NAV (고정) ===== */
+        .back {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--nav-h);
+            z-index: 1000;
+            background: #353535;
+        }
+
+        /* ===== RESET / BASE ===== */
+        *, *:after, *:before { box-sizing: border-box; }
+
+        body * { font-family: Lato !important; }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .menu a {
+            color: rgba(255, 255, 255, 0.8);
+            font-family: Lato;
+            font-size: 17pt;
+            font-weight: 400;
+            padding: 15px 25px;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        a:hover, a:focus { outline: none; }
+
+        .color-2 { background: #353535; }
+
+        .listStyle{
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            align-content: center;
+        }
+
+        #nav{ flex: 1; background-color: yellow; }
+
+        #main{ flex: 6; background-color: rgb(239, 229, 209); }
+
+        #footer{ flex: 1; background-color: aliceblue; }
+
+        /* ===== NAV underline hover 효과 ===== */
+        .SMN_effect-2 a:before,
+        .SMN_effect-2 a:after {
+            position: absolute;
+            top: 100%;               /* 기본은 a 아래쪽(보이지 않음) */
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            content: '';
+            -webkit-transition: -webkit-transform 0.3s, top 0.3s, opacity 0.3s;
+            -moz-transition: -moz-transform 0.3s, top 0.3s, opacity 0.3s;
+            transition: transform 0.3s, top 0.3s, opacity 0.3s;
+            -webkit-transform: scale(0.85);
+            -moz-transform: scale(0.85);
+            transform: scale(0.85);
+        }
+        .SMN_effect-2 a:after {
+            opacity: 0;
+        }
+        .SMN_effect-2 a:hover:before,
+        .SMN_effect-2 a:hover:after,
+        .SMN_effect-2 a:focus:before,
+        .SMN_effect-2 a:focus:after {
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            transform: scale(1);
+            background: #c8a755;
+        }
+        .SMN_effect-2 a:hover:after,
+        .SMN_effect-2 a:focus:after {
+            top: 0%;     /* 밑줄이 위로 올라와 보이게 */
+            opacity: 1;
+        }
+
+        /* ===== (추가) 현재 페이지 활성 상태 유지 ===== */
+        .menu a.is-active::before,
+        .menu a.is-active::after {
+            transform: scale(1);
+            background: #c8a755;
+            top: 0%;                 /* hover 때와 동일하게 노출 */
+            opacity: 1;
+        }
+
+        /* (선택) 활성 밑줄 맥박 애니메이션 */
+        @keyframes pulse-underline {
+            0%   { transform: scaleX(0.9); opacity: .8; }
+            50%  { transform: scaleX(1);   opacity: 1;  }
+            100% { transform: scaleX(0.9); opacity: .8; }
+        }
+        .menu a.is-active::after {
+            animation: pulse-underline 1.8s ease-in-out infinite;
+        }
+
+        /* ===== 원페이지 영역 ===== */
+        .wrap {
+            position: relative;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            padding: calc(var(--nav-h) + 16px) 24px 24px; /* 네비만큼 위 여백 확보 */
+            color: #111;
+        }
+
+        /* 데모 색상 */
+        .container:nth-child(1){ background-color: green; }
+        .container:nth-child(2){ background-color: orange; }
+        .container:nth-child(3){ background-color: yellow; }
+        .container:nth-child(4){ background-color: red; }
+        .container:nth-child(5){ background-color: blue; }
+
+        /* 추가 텍스트 샘플 */
+        .textContent{
+            color: black;
+            font-size: 50px;
+        }
+
+        .row{
+            padding-top: 20px;
+        }
